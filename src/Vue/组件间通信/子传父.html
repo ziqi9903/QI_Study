@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+</div>
+
+<template id="qi">
+  <div>
+    <h2>{{msg}}</h2>
+    <h2>{{movies}}</h2>
+    <zi-cpn :movies="movies"></zi-cpn>
+  </div>
+</template>
+
+<template id="zi">
+  <div >
+    <h2>{{msg}}</h2>
+    <h2>{{movies}}</h2>
+  </div>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const ziCpn = {
+    template: `#zi`,
+    //props:['cmovies']
+    // 类型限制
+    props: {
+      movies: Array,
+      message: String,
+      //提供一些默认值
+      msg: {
+        type: String,
+        default: 'default',
+        required: true  //必须传递的值
+      }
+    }
+    ,
+    data() {
+      return {
+        msg: 'zi'
+      }
+    }
+  }
+
+  Vue.component('myCpn',{
+    template: `#qi`,
+    data() {
+      return {
+        msg: 'qi',
+        movies: ['zi','qi','ren']
+      }
+    },
+    components:{
+      ziCpn
+
+    }
+  })
+  const app = new Vue({
+    el: '#app',
+    data: {
+      ms: 'qi'
+    }
+  })
+</script>
+</body>
+</html>

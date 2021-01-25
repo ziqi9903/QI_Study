@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>购物车</title>
+</head>
+<body>
+<div id="app">
+  <div v-if="list.length">
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>书籍名称</th>
+        <th>出版日期</th>
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr v-for="(item, index) in list">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.data}}</td>
+        <td>{{getFinalPrice(item.price)}}</td>
+        <td>
+          <button @click="increment(index)" :disabled="item.num <= 1">-</button>
+          &nbsp;{{item.num}}&nbsp;
+          <button @click="decrement(index)">+</button>
+        </td>
+        <td>
+          <button @click="remove(index)">移除</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <p>总价 :  {{getTotalPrice | showPrice}}</p>
+  </div>
+  <p v-else><h2>购物车为空</h2></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      total_price: '582.00',
+      list: [
+        {
+          id: 1,
+          name: '<算法>',
+          data: '2000/12/12',
+          price: 83.50,
+          num: 2
+        },
+        {
+          id: 2,
+          name: '<算法>',
+          data: '2000/12/12',
+          price: 83.50,
+          num: 2
+        },
+        {
+          id: 3,
+          name: '<算法>',
+          data: '2000/12/12',
+          price: 83.50,
+          num: 2
+        },
+        {
+          id: 4,
+          name: '<算法>',
+          data: '2000/12/12',
+          price: 83.00,
+          num: 2
+        }
+      ]
+    },
+    methods: {
+      getFinalPrice(price){
+        return '$' + parseFloat(price).toFixed(2)
+      },
+      increment(index){
+        this.list[index].num--;
+      },
+      decrement(index){
+        this.list[index].num++;
+      },
+      remove(index){
+        this.list.splice(index, 1)
+      }
+    },
+    computed : {
+      getTotalPrice(){
+        let total = 0
+        for (let i = 0; i < this.list.length; i++) {
+          total += this.list[i].price * this.list[i].num
+        }
+        return  total
+      }
+      /*
+       for (let i in/of this.list) {
+          total += this.list[i].price * this.list[i].num
+        }
+        for (let item of this.list) {
+          total += item.price * item.num
+        }
+      */
+    },
+    filters: {
+      showPrice(price){
+        return '$' + parseFloat(price).toFixed(2)
+      }
+    }
+
+  })
+</script>
+
+</body>
+</html>

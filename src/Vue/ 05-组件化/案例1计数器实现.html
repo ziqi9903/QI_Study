@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+</div>
+
+<template id="tem">
+  <div>
+    <h2>
+      <button @click="num--"> - </button>
+        {{num}}
+      <button @click="num++"> + </button>
+    </h2>
+  </div>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  Vue.component('myCpn', {
+    template: `#tem`,
+    data() {
+      return {
+        num: 1
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      ms: 'qi'
+    }
+  })
+</script>
+</body>
+</html>
