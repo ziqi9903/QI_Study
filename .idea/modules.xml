@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java/Java.iml" filepath="$PROJECT_DIR$/Java/Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/Other.iml" filepath="$PROJECT_DIR$/Other/Other.iml" />
       <module fileurl="file://$PROJECT_DIR$/QI_Study.iml" filepath="$PROJECT_DIR$/QI_Study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vue/Vue.iml" filepath="$PROJECT_DIR$/Vue/Vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/代码审计/代码审计.iml" filepath="$PROJECT_DIR$/代码审计/代码审计.iml" />
     </modules>
   </component>
 </project>
